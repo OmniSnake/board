@@ -7,12 +7,13 @@ for (let i = 0; i < SQUARES_COUNT; i++) {
     const square = document.createElement('div');
     square.classList.add('square');
 
-    square.addEventListener('mouseover', () => setColor(square));
-    square.addEventListener('mouseleave', () => removeColor(square));
+    square.addEventListener('mouseover', setColor);
+    square.addEventListener('mouseleave', removeColor);
     board.append(square);
 };
 
-function setColor(element) {
+function setColor(event) {
+    let element = event.target;
     color = getRandomColor();
     if (color ==='#FFFF00') {
         element.style.background ='#FFFF99';
@@ -26,7 +27,8 @@ function setColor(element) {
     };
 };
 
-function removeColor(element) {
+function removeColor(event) {
+    let element = event.target;
     element.style.background = '#1d1d1d';
     element.style.boxShadow = '0 0 2px #000';
     element.style.zIndex = '1';
